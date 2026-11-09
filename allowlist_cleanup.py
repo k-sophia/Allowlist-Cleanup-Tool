@@ -2,6 +2,12 @@
 with open("remove_list.txt", "r") as file:
     remove_list = file.read().split()
 
+# Check if the remove list is empty
+if not remove_list:
+    print("No IP addresses found in the remove list. No changes were made to the allow list.")
+    print("Exiting script")
+    exit()
+
 # Read current allow list
 with open("allow_list.txt", "r") as file:
     allowed_ip = file.read().split()
