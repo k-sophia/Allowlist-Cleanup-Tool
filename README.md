@@ -30,9 +30,10 @@ python3 allowlist_cleanup.py
 ## Sample Output
 ```Bash
 $ python3 allowlist_cleanup.py
-Allow list successfully updated.
+[+] Allow list updated successfully.
+[+] Backup created: 'backup_allow_list.txt'
 
-5 IP addresses were removed:
+[-] 5 IP address(es) removed:
    - 203.0.113.99
    - 198.51.100.14
    - 192.0.2.88
