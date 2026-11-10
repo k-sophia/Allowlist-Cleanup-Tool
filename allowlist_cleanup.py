@@ -34,7 +34,9 @@ with open("allow_list.txt", "w") as file:
     file.write("\n".join(allowed_ip))
     
 # Output result
-print("Allow list successfully updated.")
-print(f"\n{len(removed_ips)} IP addresses were removed:")
-for ip in removed_ips:
+print("[+] Allow list updated successfully.")
+print("[+] Backup created: 'backup_allow_list.txt'")
+
+print(f"\n[-] {len(removed_ips)} IP address(es) removed:")
+for ip in sorted(removed_ips):
     print(f"   - {ip}")
