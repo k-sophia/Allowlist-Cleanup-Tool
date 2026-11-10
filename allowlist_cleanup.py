@@ -10,7 +10,13 @@ if not remove_list:
 
 # Read current allow list
 with open("allow_list.txt", "r") as file:
-    allowed_ip = file.read().split()
+    allowed_ip = file.read()
+    
+# Create a backup copy of the original allow list
+with open("backup_allow_list.txt", "w") as file:
+    file.write(allowed_ip)
+
+allowed_ip = allowed_ip.split()
 
 # Remove IPs found in the remove list
 removed_count = 0
