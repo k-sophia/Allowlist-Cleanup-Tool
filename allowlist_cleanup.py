@@ -19,16 +19,18 @@ with open("backup_allow_list.txt", "w") as file:
 allowed_ip = allowed_ip.split()
 
 # Remove IPs found in the remove list
-removed_count = 0
+removed_ips = []
 for ip in remove_list:
     if ip in allowed_ip:
+        removed_ips.append(ip)
         allowed_ip.remove(ip)
-        removed_count += 1
 
 # Write updated allow list back to file
 with open("allow_list.txt", "w") as file:
     file.write("\n".join(allowed_ip))
     
 # Output result
-print(f"{removed_count} IP addresses removed from allow list.")
 print("Allow list successfully updated.")
+print(f"\n{len(removed_ips)} IP addresses were removed:")
+for ip in removed_ips:
+    print(f"   - {ip}")
