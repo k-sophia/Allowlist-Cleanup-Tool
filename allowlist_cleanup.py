@@ -1,6 +1,10 @@
 # Load remove list (replace with actual list or file read)
-with open("remove_list.txt", "r") as file:
-    remove_list = set(file.read().split())
+try:
+    with open("remove_list.txt", "r") as file:
+        remove_list = set(file.read().split())
+except OSError as e:
+    print(f"{type(e)}: {e}")
+    exit()
 
 # Check if the remove list is empty
 if not remove_list:
@@ -9,8 +13,12 @@ if not remove_list:
     exit()
 
 # Read current allow list
-with open("allow_list.txt", "r") as file:
-    allowed_ip = file.read()
+try:
+    with open("allow_list.txt", "r") as file:
+        allowed_ip = file.read()
+except OSError as e:
+    print(f"{type(e)}: {e}")
+    exit()
     
 # Create a backup copy of the original allow list
 with open("backup_allow_list.txt", "w") as file:
