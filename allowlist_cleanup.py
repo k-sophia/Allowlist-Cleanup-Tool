@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # Load remove list (replace with actual list or file read)
 try:
     with open("remove_list.txt", "r") as file:
@@ -21,7 +23,9 @@ except OSError as e:
     exit()
     
 # Create a backup copy of the original allow list
-with open("backup_allow_list.txt", "w") as file:
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+backup_filename = f"backup_allow_list_{timestamp}.txt"
+with open(backup_filename, "w") as file:
     file.write(allowed_ip)
 
 allowed_ip = set(allowed_ip.split())
@@ -35,7 +39,7 @@ with open("allow_list.txt", "w") as file:
     
 # Output result
 print("[+] Allow list updated successfully.")
-print("[+] Backup created: 'backup_allow_list.txt'")
+print(f"[+] Backup created: '{backup_filename}'")
 
 print(f"\n[-] {len(removed_ips)} IP address(es) removed:")
 for ip in sorted(removed_ips):
